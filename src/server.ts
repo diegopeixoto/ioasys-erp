@@ -1,19 +1,19 @@
 import 'reflect-metadata'
 
 import cors from 'cors'
-import express, { Application, Request, Response } from 'express'
+import express, { Application } from 'express'
+import helmet from 'helmet'
+
+import { routes } from './routes'
 const app: Application = express()
 const port = 3000 || process.env.PORT
 
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
+app.use(helmet())
 
-app.get('/', async (req: Request, res: Response): Promise<Response> => {
-    return res.status(200).send({
-        message: 'Welcome!'
-    })
-})
+app.use(routes)
 
 try {
     app.listen(port, (): void => {

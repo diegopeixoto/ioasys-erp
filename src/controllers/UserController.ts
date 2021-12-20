@@ -19,7 +19,7 @@ class UserController {
     async create(req: ValidatedRequest<UserRequestSchema>, res: Response): Promise<Response> {
         const userService = new UserService()
         try {
-            const user = await userService.create(req.body)
+            const { password, ...user } = await userService.create(req.body)
             return res.status(202).json(user)
         } catch (err) {
             return res.status(400).json({ message: err })

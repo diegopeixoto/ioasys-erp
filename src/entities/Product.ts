@@ -8,10 +8,10 @@ class Product {
     @Column({ unique: true })
     product: string
 
-    @Column()
+    @Column('float')
     cost: number
 
-    @Column()
+    @Column('float')
     value: number
 
     @CreateDateColumn()

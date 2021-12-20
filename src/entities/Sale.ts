@@ -1,14 +1,14 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
 
-@Entity('employee')
-class Employee {
+@Entity('sale')
+class Sale {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
     @Column('jsonb', { nullable: false })
     products: object[]
 
-    @Column()
+    @Column('float')
     total: number
 
     @Column()
@@ -20,11 +20,17 @@ class Employee {
     @Column()
     payment_type: string
 
-    @Column()
+    @Column('float')
     paid: number
 
-    @Column()
+    @Column('float')
     change: number
+
+    @Column('float')
+    cost: number
+
+    @Column('float')
+    profit: number
 
     @CreateDateColumn()
     created_at: Date
@@ -33,4 +39,4 @@ class Employee {
     updated_at: Date
 }
 
-export { Employee }
+export { Sale }

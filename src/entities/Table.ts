@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity('table')
-class Occupation {
+class Table {
     @PrimaryGeneratedColumn('uuid')
     id: string
 
@@ -15,4 +15,4 @@ class Occupation {
     vip: boolean
 }
 
-export { Occupation }
+export { Table }

@@ -1,9 +1,11 @@
+import validator from 'cpf-cnpj-validator'
 import { ContainerTypes, ValidatedRequestSchema } from 'express-joi-validation'
-import Joi from 'joi'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const Joi = require('@hapi/joi').extend(validator)
 
 export const employeeSchema = Joi.object({
     name: Joi.string().required(),
-    document: Joi.string().required(),
+    document: Joi.document().cpf().required(),
     occupation: Joi.string().required()
 })
 

@@ -1,7 +1,7 @@
 import { ContainerTypes, ValidatedRequestSchema } from 'express-joi-validation'
 import Joi from 'joi'
 
-export const productionSchema = Joi.object({
+export const productSchema = Joi.object({
     product: Joi.string().required(),
     cost: Joi.number().required(),
     value: Joi.number().required()

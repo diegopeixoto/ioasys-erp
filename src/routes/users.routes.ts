@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { createValidator } from 'express-joi-validation'
+import passport from 'passport'
 
 const validator = createValidator()
 
@@ -14,5 +15,10 @@ userRoutes.post('/new/role', validator.body(roleSchema), userController.createRo
 userRoutes.post('/new', validator.body(userSchema), userController.create)
 
 userRoutes.post('/login', validator.body(loginSchema), userController.login)
+userRoutes.post(
+    '/register',
+    [validator.body(userSchema), passport.authenticate('jwt', { session: false })],
+    userController.register
+)
 
 export { userRoutes }

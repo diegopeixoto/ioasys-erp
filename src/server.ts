@@ -11,11 +11,11 @@ const app: Application = express()
 const port = 3000 || process.env.PORT
 import createError from 'http-errors'
 
-import { JwtStrategy } from './utils/auth'
+import { strategy } from './utils/auth'
 
 app.use(express.json())
 app.use(cors())
-JwtStrategy(passport)
+strategy(passport)
 app.use(express.urlencoded({ extended: true }))
 app.use(helmet())
 

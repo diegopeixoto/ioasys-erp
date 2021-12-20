@@ -23,12 +23,15 @@ class UserService {
             return Promise.reject(error)
         }
     }
+    _isValidPassword = async function (username: string, password: string) {
+        try {
+            const user = await this.findOne({ username })
+            const comparePassword = await bcrypt.compare(password, user.password)
+            return comparePassword
+        } catch (error) {
+            return Promise.reject(error)
+        }
+    }
 }
 
-const _isValidPassword = async function (username: string, password: string) {
-    const user = this.findOne({ username })
-    const comparePassword = await bcrypt.compare(password, user.password)
-    return comparePassword
-    return true
-}
-export { _isValidPassword, UserService }
+export { UserService }

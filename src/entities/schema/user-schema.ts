@@ -8,6 +8,11 @@ export const userSchema = Joi.object({
     role: Joi.string().required()
 })
 
+export const loginSchema = Joi.object({
+    username: Joi.string().required(),
+    password: Joi.string().required()
+})
+
 export interface UserRequestSchema extends ValidatedRequestSchema {
     [ContainerTypes.Body]: {
         user: string
@@ -17,9 +22,21 @@ export interface UserRequestSchema extends ValidatedRequestSchema {
     }
 }
 
+export interface LoginRequestSchema extends ValidatedRequestSchema {
+    [ContainerTypes.Body]: {
+        username: string
+        password: string
+    }
+}
+
 export interface IUser {
     user: string
     email: string
     password: string
     role: string
+}
+
+export interface ILogin {
+    username: string
+    password: string
 }

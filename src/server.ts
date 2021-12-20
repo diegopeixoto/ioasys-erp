@@ -4,14 +4,18 @@ import './database'
 import cors from 'cors'
 import express, { Application } from 'express'
 import helmet from 'helmet'
+import passport from 'passport'
 
 import { routes } from './routes'
 const app: Application = express()
 const port = 3000 || process.env.PORT
 import createError from 'http-errors'
 
+import { JwtStrategy } from './utils/auth'
+
 app.use(express.json())
 app.use(cors())
+JwtStrategy(passport)
 app.use(express.urlencoded({ extended: true }))
 app.use(helmet())
 

@@ -1,4 +1,5 @@
 import 'reflect-metadata'
+import './database'
 
 import cors from 'cors'
 import express, { Application } from 'express'

@@ -1,8 +1,4 @@
-import * as dotenv from 'dotenv-safe'
-
-dotenv.config()
-
-export default {
+module.exports = {
     type: 'postgres',
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
